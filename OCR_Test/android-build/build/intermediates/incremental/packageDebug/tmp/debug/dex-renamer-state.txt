@@ -1,0 +1,4 @@
+#Mon Apr 22 16:46:02 CST 2024
+base.0=D\:\\git\\OCR_Test\\OCR_Test\\android-build\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
