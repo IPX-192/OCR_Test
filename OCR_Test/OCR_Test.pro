@@ -45,13 +45,13 @@ INCLUDEPATH +=  $$PWD/./libD/libpng
 
 
 
-LIBS +=    -LD:\ocr_test\lib\libOpencv\lib\android\armeabi-v7a -lopencv_java4
+LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\libOpencv\lib\android\armeabi-v7a -lopencv_java4
 
-LIBS +=    -LD:\ocr_test\libD\leptonica\lib -lleptonica
+LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\leptonica\lib -lleptonica
 
-LIBS +=    -LD:\ocr_test\libD\tesseract\lib -ltesseract
+LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\tesseract\lib -ltesseract
 
-LIBS +=    -LD:\ocr_test\libD\tesseract\lib -lcommon_training
+LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\tesseract\lib -lcommon_training
 
 
 
