@@ -29,6 +29,14 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
+#TEMPLATE = lib  # for the Desktop (Lin/Win/Mac) this is a "lib"
+
+#android {
+#    TEMPLATE = app  # for Android this is an "app"
+#}
+
+
 INCLUDEPATH +=  $$PWD/./lib/libOpencv/include
 INCLUDEPATH +=  $$PWD/./libD/leptonica/include
 INCLUDEPATH +=  $$PWD/./libD/tesseract/include
@@ -70,7 +78,7 @@ DISTFILES += \
     android/gradlew \
     android/gradlew.bat \
     android/res/values/libs.xml \
-    android/src/com/MyJavaClass.java
+  # android/src/com/MyJavaClass.java
 
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_PACKAGE_SOURCE_DIR = \

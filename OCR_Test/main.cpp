@@ -22,20 +22,20 @@ static bool requestAndrioPermissions(const QString &qsPermission)
 }
 
 
-int maxAB(int a,int b) {
-    QAndroidJniObject activity = QtAndroid::androidActivity();
-    if (activity.isValid())
-    {
-        jint value = QAndroidJniObject::callStaticMethod<jint>("com/MyJavaClass/MyJavaClass",
-                                                               "maxAB",
-                                                               "(II)I",
-                                                               a,
-                                                               b);
+//int maxAB(int a,int b) {
+//    QAndroidJniObject activity = QtAndroid::androidActivity();
+//    if (activity.isValid())
+//    {
+//        jint value = QAndroidJniObject::callStaticMethod<jint>("com/MyJavaClass/MyJavaClass",
+//                                                               "maxAB",
+//                                                               "(II)I",
+//                                                               a,
+//                                                               b);
 
-        return value;
-    }
+//        return value;
+//    }
 
-}
+//}
 
 int main(int argc, char *argv[])
 {
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
 
-    qDebug()<<"10 and 5 max is == "<<maxAB(10,5);
+   // qDebug()<<"10 and 5 max is == "<<maxAB(10,5);
 
     //存储权限
     if(!requestAndrioPermissions("android.permission.WRITE_EXTERNAL_STORAGE"))

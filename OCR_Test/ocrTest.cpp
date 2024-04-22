@@ -23,8 +23,7 @@ ocrTest::ocrTest()
 {
 
 
-    std::string imPath = "/sdcard//1//test.jpg";
-
+    std::string imPath = "/sdcard//1//3.png";
 
     cv::Mat im ;
     im = cv::imread(imPath, cv::IMREAD_COLOR);
@@ -39,7 +38,7 @@ ocrTest::ocrTest()
 
     std::string dataPath = "/sdcard//1//tessdata//";
 
-    int a =  api->Init(dataPath.c_str(),"chi_sim",tesseract::OEM_DEFAULT);    //中文识别 chi_sim +英文识别 eng
+    int a =  api->Init(dataPath.c_str(),"chi_sim",tesseract::OEM_LSTM_ONLY);    //中文识别 chi_sim +英文识别 eng
 
     qDebug()<<"asfffffffffffsafas   "<< QString::number(a);
 
@@ -52,13 +51,13 @@ ocrTest::ocrTest()
 
     qDebug() << "--------" << im.cols << "  " << im.rows << "  "<< im.depth()  << "  " << im.step;
 
-    // api->SetImage(im.data, im.cols, im.rows, 3, im.step);
+    //api->SetImage(im.data, im.cols, im.rows, 3, im.step);
 
 
     //
 
 
-    QString filePath = "/sdcard//1//test.jpg";
+    QString filePath = "/sdcard/1/3.png";
 
     QPixmap pixmap;
 
@@ -87,9 +86,20 @@ ocrTest::ocrTest()
 
     QString str = QString::fromLocal8Bit(outText);
 
-    qDebug()<<"asfasfasf"<< str;
+    qDebug() << "UTF-8 文本：" << (outText != nullptr ? outText : "wo cao");
 
-    //delete[] outText;
+    if (outText != nullptr && *outText != '\0') {
+        // 如果获取到了有效的 UTF-8 文本，进行转换
+        QString str = QString::fromUtf8(outText);
+
+        // 输出转换后的 QString
+        qDebug() << "转换后的 QString：" << str;
+    } else {
+        // 如果获取到的 UTF-8 文本为空或者无效，输出相应信息
+        qDebug() << "无效的 UTF-8 文本，转换失败。";
+    }
+
+    delete[] outText;
 
     api->End();
     delete api;
