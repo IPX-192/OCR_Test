@@ -31,6 +31,11 @@
         android:normalScreens="true"
         android:smallScreens="true" />
 
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name="org.qtproject.qt5.android.bindings.QtApplication"
         android:debuggable="true"
@@ -158,6 +163,8 @@
                 android:value="default" />
             <!-- extract android style -->
         </activity>
+
+        <receiver android:name="com.MyJavaclass.MyJavaclass" />
 
         <!-- For adding service(s) please check: https://wiki.qt.io/AndroidServices -->
 
