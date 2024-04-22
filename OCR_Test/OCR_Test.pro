@@ -1,4 +1,4 @@
-QT += quick
+QT += quick core qml androidextras network
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -13,7 +13,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+        ocrTest.cpp
 
 RESOURCES += qml.qrc
 
@@ -28,6 +29,39 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+INCLUDEPATH +=  $$PWD/./lib/libOpencv/include
+INCLUDEPATH +=  $$PWD/./libD/leptonica/include
+INCLUDEPATH +=  $$PWD/./libD/tesseract/include
+
+
+#tesstwo
+INCLUDEPATH +=  $$PWD/./libD/com_googlecode_leptonica_android/src/src
+INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/api
+INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/ccutil
+INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/ccstruct
+
+INCLUDEPATH +=  $$PWD/./libD/libjpeg
+INCLUDEPATH +=  $$PWD/./libD/libpng
+
+
+
+LIBS +=    -LD:\ocr_test\lib\libOpencv\lib\android\armeabi-v7a -lopencv_java4
+
+LIBS +=    -LD:\ocr_test\libD\leptonica\lib -lleptonica
+
+LIBS +=    -LD:\ocr_test\libD\tesseract\lib -ltesseract
+
+LIBS +=    -LD:\ocr_test\libD\tesseract\lib -lcommon_training
+
+
+
+#tesstwo
+#LIBS +=    -LD:\ocr_test\libD\tesstwo -ljpgt
+#LIBS +=    -LD:\ocr_test\libD\tesstwo -llept
+#LIBS +=    -LD:\ocr_test\libD\tesstwo -lpngt
+#LIBS +=    -LD:\ocr_test\libD\tesstwo -ltess
+
+
 DISTFILES += \
     android/AndroidManifest.xml \
     android/build.gradle \
@@ -40,4 +74,13 @@ DISTFILES += \
 contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
+
+    ANDROID_EXTRA_LIBS = \
+        D:/git/OCR_Test/OCR_Test/lib/libOpencv/lib/android/armeabi-v7a/libopencv_java4.so \
+        D:/git/OCR_Test/OCR_Test/libD/leptonica/lib/libleptonica.so \
+        $$PWD/libD/tesseract/lib/libleptonica.so \
+        $$PWD/libD/tesseract/lib/libtesseract.so
 }
+
+HEADERS += \
+    ocrTest.h

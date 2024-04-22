@@ -8,12 +8,17 @@
          not be edited manually. -->
 
     <array name="bundled_libs">
-        
+        <item>opencv_java4</item>
+<item>leptonica</item>
+<item>leptonica</item>
+<item>tesseract</item>
+
     </array>
 
      <array name="qt_libs">
          <item>c++_shared</item>
 <item>Qt5Core</item>
+<item>Qt5AndroidExtras</item>
 <item>Qt5Gui</item>
 <item>Qt5Network</item>
 <item>Qt5Qml</item>

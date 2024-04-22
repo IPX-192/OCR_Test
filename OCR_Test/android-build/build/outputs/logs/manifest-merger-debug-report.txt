@@ -150,9 +150,9 @@ ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:45:13-193
 	android:name
 		ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:45:24-66
 meta-data#android.app.load_local_jars
-ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:46:13-126
+ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:46:13-150
 	android:value
-		ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:46:67-124
+		ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:46:67-148
 	android:name
 		ADDED from D:\git\OCR_Test\OCR_Test\android-build\AndroidManifest.xml:46:24-66
 meta-data#android.app.static_init_classes

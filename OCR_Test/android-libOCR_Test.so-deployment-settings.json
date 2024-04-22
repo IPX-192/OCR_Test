@@ -10,6 +10,7 @@
    "ndk-host": "windows-x86_64",
    "target-architecture": "armeabi-v7a",
    "android-package-source-directory": "D:/git/OCR_Test/OCR_Test/android",
+   "android-extra-libs": "D:/git/OCR_Test/OCR_Test/lib/libOpencv/lib/android/armeabi-v7a/libopencv_java4.so,D:/git/OCR_Test/OCR_Test/libD/leptonica/lib/libleptonica.so,D:/git/OCR_Test/OCR_Test/libD/tesseract/lib/libleptonica.so,D:/git/OCR_Test/OCR_Test/libD/tesseract/lib/libtesseract.so",
    "qml-root-path": "D:/git/OCR_Test/OCR_Test",
    "stdcpp-path": "D:\\Android\\android-ndk-r19c/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++_shared.so",
    "useLLVM": true,

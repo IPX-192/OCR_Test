@@ -358,37 +358,35 @@
                 {
                     "source": "D:\\git\\OCR_Test\\OCR_Test\\android-build\\res\\values\\libs.xml",
                     "from": {
-                        "startLines": "50,24,9,13,2",
-                        "startColumns": "4,4,4,5,4",
-                        "startOffsets": "2739,578,300,360,57",
-                        "endLines": "56,49,11,22,4",
-                        "endColumns": "12,12,12,13,12",
-                        "endOffsets": "3199,2733,351,570,169"
+                        "startLines": "-1,-1,9,17,-1",
+                        "startColumns": "-1,-1,4,5,-1",
+                        "startOffsets": "-1,-1,300,455,-1",
+                        "endLines": "-1,-1,15,27,-1",
+                        "endColumns": "-1,-1,12,13,-1",
+                        "endOffsets": "-1,-1,446,695,-1"
                     },
                     "to": {
-                        "startLines": "2,9,35,38,48",
+                        "startLines": "2,9,35,42,53",
                         "startColumns": "4,4,4,4,4",
-                        "startOffsets": "55,518,2676,2730,2943",
-                        "endLines": "8,34,37,47,50",
+                        "startOffsets": "55,518,2676,2825,3068",
+                        "endLines": "8,34,41,52,55",
                         "endColumns": "12,12,12,13,12",
-                        "endOffsets": "513,2671,2725,2938,3053"
+                        "endOffsets": "513,2671,2820,3063,3178"
                     }
                 },
                 {
                     "source": "D:\\Qt\\Qt5.12.4\\5.12.4\\android_armv7\\src\\android\\java\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "5,4,3,6",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "324,201,88,433",
-                        "endColumns": "107,121,111,97",
-                        "endOffsets": "427,318,195,526"
+                        "startLines": "-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1"
                     },
                     "to": {
-                        "startLines": "51,52,53,54",
+                        "startLines": "56,57,58,59",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "3058,3166,3288,3400",
+                        "startOffsets": "3183,3291,3413,3525",
                         "endColumns": "107,121,111,97",
-                        "endOffsets": "3161,3283,3395,3493"
+                        "endOffsets": "3286,3408,3520,3618"
                     }
                 }
             ]
