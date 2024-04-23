@@ -3,7 +3,10 @@
 #include <QDebug>
 #include <QQmlApplicationEngine>
 #include <QtAndroidExtras>
-#include <QAndroidJniObject>
+
+#include <QtAndroidExtras/QAndroidJniObject>
+#include <QtAndroidExtras/qandroidjnienvironment.h>
+
 #include "ocrTest.h"
 
 static bool requestAndrioPermissions(const QString &qsPermission)
@@ -22,20 +25,33 @@ static bool requestAndrioPermissions(const QString &qsPermission)
 }
 
 
-//int maxAB(int a,int b) {
-//    QAndroidJniObject activity = QtAndroid::androidActivity();
-//    if (activity.isValid())
-//    {
-//        jint value = QAndroidJniObject::callStaticMethod<jint>("com/MyJavaClass/MyJavaClass",
-//                                                               "maxAB",
-//                                                               "(II)I",
-//                                                               a,
-//                                                               b);
+int maxAB(int a,int b) {
+    QAndroidJniObject activity = QtAndroid::androidActivity();
+    if (activity.isValid())
+    {
+        jint value = QAndroidJniObject::callStaticMethod<jint>("com/MyJavaClass/MyJavaClass",
+                                                               "maxAB",
+                                                               "(II)I",
+                                                               a,
+                                                               b);
 
-//        return value;
-//    }
+        return value;
+    }
 
-//}
+}
+
+void setScreenBrightness(int brightness) {
+    QAndroidJniObject activity = QtAndroid::androidActivity();
+    if (activity.isValid())
+    {
+        brightness = ((float)brightness/100)*255;
+        QAndroidJniObject::callStaticMethod<void>("com/MyJavaClass/MyJavaClass",
+                                                  "settingBrightness",
+                                                  "(Landroid/content/Context;I)V",
+                                                  activity.object<jobject>(),
+                                                  brightness);
+    }
+}
 
 int main(int argc, char *argv[])
 {
@@ -44,7 +60,9 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
 
-   // qDebug()<<"10 and 5 max is == "<<maxAB(10,5);
+    qDebug()<<"10 and 5 max is == "<<maxAB(10,5);
+
+    // setScreenBrightness(80);
 
     //存储权限
     if(!requestAndrioPermissions("android.permission.WRITE_EXTERNAL_STORAGE"))
