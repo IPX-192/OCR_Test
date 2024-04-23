@@ -37,37 +37,59 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 #}
 
 
-INCLUDEPATH +=  $$PWD/./lib/libOpencv/include
-INCLUDEPATH +=  $$PWD/./libD/leptonica/include
-INCLUDEPATH +=  $$PWD/./libD/tesseract/include
+  CONFIG(debug, debug|release){
+
+    INCLUDEPATH +=  $$PWD/./lib/libOpencv/include
+    INCLUDEPATH +=  $$PWD/./libD/leptonica/include
+    INCLUDEPATH +=  $$PWD/./libD/tesseract/include
+
+
+    #tesstwo
+    INCLUDEPATH +=  $$PWD/./libD/com_googlecode_leptonica_android/src/src
+    INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/api
+    INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/ccutil
+    INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/ccstruct
+
+    INCLUDEPATH +=  $$PWD/./libD/libjpeg
+    INCLUDEPATH +=  $$PWD/./libD/libpng
+
+
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\libOpencv\lib\android\armeabi-v7a -lopencv_java4
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\leptonica\lib -lleptonica
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\tesseract\lib -ltesseract
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\tesseract\lib -lcommon_training
+
+    #LIBS +=    -LD:\ocr_test\libD\tesstwo -ljpgt
+    #LIBS +=    -LD:\ocr_test\libD\tesstwo -llept
+    #LIBS +=    -LD:\ocr_test\libD\tesstwo -lpngt
+    #LIBS +=    -LD:\ocr_test\libD\tesstwo -ltess
+
+
+  } else {
+
+
+
+    INCLUDEPATH +=  $$PWD/./lib/libOpencv/include
+    INCLUDEPATH +=  $$PWD/./lib/leptonica/include
+    INCLUDEPATH +=  $$PWD/./lib/tesseract/include
+
+
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\libOpencv\lib\android\armeabi-v7a -lopencv_java4
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\leptonica\lib -lleptonica
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\tesseract\lib -ltesseract
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\tesseract\lib -lcommon_training
+    LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\tesseract\lib -ljpeg
+  }
+
+
+
+
+
+
+
 
 
 #tesstwo
-INCLUDEPATH +=  $$PWD/./libD/com_googlecode_leptonica_android/src/src
-INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/api
-INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/ccutil
-INCLUDEPATH +=  $$PWD/./libD/com_googlecode_tesseract_android/src/ccstruct
-
-INCLUDEPATH +=  $$PWD/./libD/libjpeg
-INCLUDEPATH +=  $$PWD/./libD/libpng
-
-
-
-LIBS +=    -LD:\git\OCR_Test\OCR_Test\lib\libOpencv\lib\android\armeabi-v7a -lopencv_java4
-
-LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\leptonica\lib -lleptonica
-
-LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\tesseract\lib -ltesseract
-
-LIBS +=    -LD:\git\OCR_Test\OCR_Test\libD\tesseract\lib -lcommon_training
-
-
-
-#tesstwo
-#LIBS +=    -LD:\ocr_test\libD\tesstwo -ljpgt
-#LIBS +=    -LD:\ocr_test\libD\tesstwo -llept
-#LIBS +=    -LD:\ocr_test\libD\tesstwo -lpngt
-#LIBS +=    -LD:\ocr_test\libD\tesstwo -ltess
 
 
 DISTFILES += \
@@ -85,11 +107,21 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 
-    ANDROID_EXTRA_LIBS = \
-        D:/git/OCR_Test/OCR_Test/lib/libOpencv/lib/android/armeabi-v7a/libopencv_java4.so \
-        D:/git/OCR_Test/OCR_Test/libD/leptonica/lib/libleptonica.so \
-        $$PWD/libD/tesseract/lib/libleptonica.so \
-        $$PWD/libD/tesseract/lib/libtesseract.so
+    CONFIG(debug, debug|release){
+        ANDROID_EXTRA_LIBS = \
+            D:/git/OCR_Test/OCR_Test/lib/libOpencv/lib/android/armeabi-v7a/libopencv_java4.so \
+            D:/git/OCR_Test/OCR_Test/libD/leptonica/lib/libleptonica.so \
+            $$PWD/libD/tesseract/lib/libtesseract.so
+    }
+
+    else {
+        ANDROID_EXTRA_LIBS = \
+            D:/git/OCR_Test/OCR_Test/lib/libOpencv/lib/android/armeabi-v7a/libopencv_java4.so \
+            D:/git/OCR_Test/OCR_Test/lib/leptonica/lib/libleptonica.so \
+            D:/git/OCR_Test/OCR_Test/lib/tesseract/lib/libjpeg.so
+
+    }
+
 }
 
 HEADERS += \

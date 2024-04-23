@@ -12,7 +12,8 @@
 
 //#include <baseapi.h>
 //#include <allheaders.h>
-#include "tesseract/genericvector.h"
+//#include "tesseract/genericvector.h"
+//#include "tesseract/serialis.h"
 
 
 #include <QtAndroidExtras>
@@ -23,7 +24,7 @@ ocrTest::ocrTest()
 {
 
 
-    std::string imPath = "/sdcard//1//3.png";
+    std::string imPath = "/sdcard//1//3.jpeg";
 
     cv::Mat im ;
     im = cv::imread(imPath, cv::IMREAD_COLOR);
@@ -46,29 +47,16 @@ ocrTest::ocrTest()
 
 
 
-    api->SetImage(gray.data, gray.cols, gray.rows, 1, gray.cols);
+   // api->SetImage(gray.data, gray.cols, gray.rows, 1, gray.cols);
 
 
     qDebug() << "--------" << im.cols << "  " << im.rows << "  "<< im.depth()  << "  " << im.step;
 
-    //api->SetImage(im.data, im.cols, im.rows, 3, im.step);
+    // api->SetImage(im.data, im.cols, im.rows, 3, im.step);
 
 
     //
-
-
-    QString filePath = "/sdcard/1/3.png";
-
-    QPixmap pixmap;
-
-    if (QFile(filePath).exists()) {
-        pixmap.load(filePath);
-        qDebug() << "pix read success";
-    } else {
-        qDebug() << "pix read fail";
-    }
-
-    Pix *image = pixRead("/sdcard//1//test.jpg");
+    Pix *image = pixRead("/sdcard/1/3.jpeg");
     if(image == nullptr)
     {
         qDebug() << "Failed to pix read";
@@ -77,7 +65,7 @@ ocrTest::ocrTest()
 
 
 
-    // api->SetImage(pixmap.toImage());
+     api->SetImage(image);
 
 
 
@@ -86,9 +74,10 @@ ocrTest::ocrTest()
 
     QString str = QString::fromLocal8Bit(outText);
 
+
     qDebug() << "UTF-8 文本：" << (outText != nullptr ? outText : "wo cao");
 
-    if (outText != nullptr && *outText != '\0') {
+    if (outText != nullptr) {
         // 如果获取到了有效的 UTF-8 文本，进行转换
         QString str = QString::fromUtf8(outText);
 
