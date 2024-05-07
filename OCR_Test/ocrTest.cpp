@@ -1,6 +1,5 @@
 ﻿#include <QDebug>
 #include <QQmlApplicationEngine>
-#include <leptonica/allheaders.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc.hpp>
@@ -8,12 +7,10 @@
 #include <string>
 #include <QFile>
 #include <QPixmap>
-#include <tesseract/baseapi.h>
 
-//#include <baseapi.h>
-//#include <allheaders.h>
-//#include "tesseract/genericvector.h"
-//#include "tesseract/serialis.h"
+
+#include <baseapi.h>
+#include <allheaders.h>
 
 
 #include <QtAndroidExtras>
