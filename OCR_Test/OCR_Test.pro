@@ -129,6 +129,13 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
 
     }
 
+    ANDROID_EXTRA_LIBS = \
+        D:/git/OCR_Test/OCR_Test/libD/tesseract4android/armeabi-v7a/libjpeg.so \
+        D:/git/OCR_Test/OCR_Test/libD/tesseract4android/armeabi-v7a/libleptonica.so \
+        D:/git/OCR_Test/OCR_Test/libD/tesseract4android/armeabi-v7a/libpngx.so \
+        D:/git/OCR_Test/OCR_Test/libD/tesseract4android/armeabi-v7a/libtesseract.so \
+        $$PWD/lib/libOpencv/lib/android/armeabi-v7a/libopencv_java4.so
+
 }
 
 HEADERS += \

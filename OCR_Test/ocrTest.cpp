@@ -15,13 +15,14 @@
 
 #include <QtAndroidExtras>
 #include <QAndroidJniObject>
+#include <QRegularExpression>
 #include "ocrTest.h"
 
 ocrTest::ocrTest()
 {
 
 
-    std::string imPath = "/sdcard//1//3.jpeg";
+    std::string imPath = "/sdcard//1//3.jpg";
 
     cv::Mat im ;
     im = cv::imread(imPath, cv::IMREAD_COLOR);
@@ -44,12 +45,12 @@ ocrTest::ocrTest()
 
 
 
-   // api->SetImage(gray.data, gray.cols, gray.rows, 1, gray.cols);
+    api->SetImage(gray.data, gray.cols, gray.rows, 1, gray.cols);
 
 
     qDebug() << "--------" << im.cols << "  " << im.rows << "  "<< im.depth()  << "  " << im.step;
 
-    // api->SetImage(im.data, im.cols, im.rows, 3, im.step);
+    //api->SetImage(im.data, im.cols, im.rows, 3, im.step);
 
 
     //
@@ -62,7 +63,7 @@ ocrTest::ocrTest()
 
 
 
-     api->SetImage(image);
+    // api->SetImage(image);
 
 
 
@@ -79,10 +80,23 @@ ocrTest::ocrTest()
         QString str = QString::fromUtf8(outText);
 
         // 输出转换后的 QString
-        qDebug() << "转换后的 QString：" << str;
+        qDebug() << "转换后的 QString：" << str <<"length" <<str.length();
     } else {
         // 如果获取到的 UTF-8 文本为空或者无效，输出相应信息
         qDebug() << "无效的 UTF-8 文本，转换失败。";
+    }
+
+    str.remove(" ");
+
+    QRegularExpression re("\\b\\d{17}(\\d|X)\\b"); // 身份证号的正则表达式
+
+    QRegularExpressionMatch match = re.match(str);
+
+    if (match.hasMatch()) {
+        QString idNumber = match.captured(0);
+        qDebug() << "提取的身份证号为：" << idNumber;
+    } else {
+        qDebug() << "未找到身份证号";
     }
 
     delete[] outText;
