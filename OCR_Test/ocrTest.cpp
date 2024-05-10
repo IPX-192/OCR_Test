@@ -9,14 +9,19 @@
 #include <QPixmap>
 
 
+
 #include <baseapi.h>
 #include <allheaders.h>
+#include <vector>
 
 
 #include <QtAndroidExtras>
 #include <QAndroidJniObject>
 #include <QRegularExpression>
 #include "ocrTest.h"
+
+using namespace cv;
+using namespace std;
 
 ocrTest::ocrTest()
 {
@@ -30,6 +35,54 @@ ocrTest::ocrTest()
     // 将图像转换为灰度图
     cv::Mat gray;
     cv::cvtColor(im, gray, cv::COLOR_BGR2GRAY);
+
+
+    // 创建人脸检测器
+    cv::CascadeClassifier faceCascade;
+      return;
+    faceCascade.load("/sdcard/1/haarcascade_frontalface_default.xml"); // 加载Haar级联分类器
+
+
+    if (faceCascade.empty()) {
+
+        qDebug()<<"Failed to load cascade classifier!";
+        return;
+    }
+
+    else {
+
+        qDebug()<<"Failed to load cascade classifier1111111111111!";
+    }
+    return;
+
+
+    // 检测人脸
+    std::vector<Rect> faces;
+    faceCascade.detectMultiScale(gray, faces, 1.1, 2, 0 | CASCADE_SCALE_IMAGE, Size(30, 30));
+
+
+    return;
+
+    // 如果检测到人脸
+    if (!faces.empty()) {
+        // 提取第一个人脸
+        Rect faceRect = faces[0];
+
+        // 在原图上画出人脸矩形
+        rectangle(im, faceRect, Scalar(255, 0, 0), 2);
+
+        // 裁剪人脸
+        Mat faceROI = im(faceRect);
+
+        // 将OpenCV图像转换为Qt图像
+        QImage img = QImage(faceROI.data, faceROI.cols, faceROI.rows, faceROI.step, QImage::Format_RGB888).rgbSwapped();
+
+        qDebug()<<"sssssssssssssssssssssssss"<<img.size();
+
+    }
+
+
+    return;
 
     tesseract::TessBaseAPI *api = new tesseract::TessBaseAPI();
 
