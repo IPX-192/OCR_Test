@@ -39,9 +39,10 @@ ocrTest::ocrTest()
 
     // 创建人脸检测器
     cv::CascadeClassifier faceCascade;
-      return;
+
     faceCascade.load("/sdcard/1/haarcascade_frontalface_default.xml"); // 加载Haar级联分类器
 
+    return;
 
     if (faceCascade.empty()) {
 
@@ -53,7 +54,7 @@ ocrTest::ocrTest()
 
         qDebug()<<"Failed to load cascade classifier1111111111111!";
     }
-    return;
+
 
 
     // 检测人脸
