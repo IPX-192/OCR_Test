@@ -107,20 +107,6 @@ ocrTest::ocrTest()
     //api->SetImage(im.data, im.cols, im.rows, 3, im.step);
 
 
-    //
-    Pix *image = pixRead("/sdcard/1/3.jpeg");
-    if(image == nullptr)
-    {
-        qDebug() << "Failed to pix read";
-        //  return;
-    }
-
-
-
-    // api->SetImage(image);
-
-
-
     char *outText;
     outText = api->GetUTF8Text();
 
